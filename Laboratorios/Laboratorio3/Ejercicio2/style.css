@@ -1,0 +1,48 @@
+body{
+box-sizing: border-box;
+height: 100vh;
+background-image:url(https://besthqwallpapers.com/Uploads/24-12-2017/34878/thumb2-hexagons-4k-art-blue-background-creative.jpg);
+background-attachment: fixed;
+background-position:center;
+background-size:cover;
+padding: 1em 5% ;
+margin: 0;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+nav{
+    width: 100%;
+    height:auto ;
+    display: flex;
+    flex-flow:row wrap;
+    justify-content: flex-end;
+}
+
+
+main{
+    width: 60%;
+    height: auto;
+    
+    display: flex;
+
+    flex-direction: column;
+    flex-flow:wrap;
+    
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.contac{
+    background:rgb(92, 182, 241);
+    justify-content: space-between;
+
+
+}
+.help{
+    background:rgb(238, 22, 33);
+
+}
