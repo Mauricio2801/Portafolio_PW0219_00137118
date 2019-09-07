@@ -1,15 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+
 body{
-box-sizing: border-box;
-height: 100vh;
-background-image:url(https://besthqwallpapers.com/Uploads/24-12-2017/34878/thumb2-hexagons-4k-art-blue-background-creative.jpg);
-background-attachment: fixed;
-background-position:center;
-background-size:cover;
-padding: 1em 5% ;
-margin: 0;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
+    background-image:url(https://i.pinimg.com/originals/89/17/b7/8917b79eab573abe573f37ced351acbf.jpg);
+    background-attachment: fixed;
+    background-position:center;
+    background-size:cover;
+    padding: 1em 5% ;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 nav{
@@ -18,31 +20,93 @@ nav{
     display: flex;
     flex-flow:row wrap;
     justify-content: flex-end;
+
+}
+
+.primero{
+    background: blue;
+    color: white;
+    margin-right: 15px;
+    font-size: 1.3em;
+    }
+
+.segundo{
+    background: blue;
+    color: white;
+    margin-right: 15px;
+    font-size: 1.3em;
+}
+
+.tercero{
+    background: red;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.3em;
 }
 
 
-main{
-    width: 60%;
-    height: auto;
-    
+h1{
+    font-size: 3em;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    border-radius: 5px;
+}
+
+h1:hover{
+    background: black;
+    height: 150;
+}
+
+hr{
+    color: white;
+    width: 50%;
+    margin: 0 auto;
+    height: 5px;
+    background: white;
+}
+
+img{
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid black; 
+}
+img:hover{
+    height:200px;
+}
+.flex-container{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+
+.final{
+    width: 100%;
+    height:auto ;
     display: flex;
-
-    flex-direction: column;
-    flex-flow:wrap;
-    
-    justify-content: center;
-    align-items: center;
+    flex-flow:row wrap;
+    justify-content: space-between;
 }
 
-
-
-.contac{
+.contact{
     background:rgb(92, 182, 241);
-    justify-content: space-between;
+    font-size: 1.3em;
+}
 
-
+.contact:hover{
+    background: blue;
+    color: white;
 }
 .help{
     background:rgb(238, 22, 33);
+    font-size: 1.3em;
+    color: white;
 
+}
+
+.help:hover{
+    background: pink;
+    color: black;
 }
