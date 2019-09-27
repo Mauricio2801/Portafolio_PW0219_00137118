@@ -1,0 +1,45 @@
+@import "variables";
+
+.center{
+    @include buttons();
+}
+
+.logos{
+    @include logos();
+    color: $color;
+}
+
+.body{
+    font-family: $texto;
+
+}
+
+.h1{
+    font-family: $texto;
+    color: $color2;
+}
+
+.botonesNav{
+
+@include buttons2;
+color: $color;
+@include hover;
+@include buttons3;
+}
+
+.BotonFAQ{
+@include buttons;
+color: $color;
+}
+
+.BotonOpen{
+    @include buttons2;
+}
+
+.hr{
+    @include hr;
+}
+
+.BotonDown{
+    @include buttons3;
+}

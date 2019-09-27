@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Stint+Ultra+Condensed&display=swap');
+
+
+body {
+    background-image: url(https://i.pinimg.com/originals/89/17/b7/8917b79eab573abe573f37ced351acbf.jpg);
+    background-size: cover;
+}
+
+.center {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    margin-top: 25vh;
+    flex-direction: column;
+
+}
+
+h1 {
+    color: white;
+    font-size: 75px;
+    text-transform: uppercase;
+    font-family: 'Stint Ultra Condensed', cursive;
+    margin: 10px;
+    letter-spacing: 5px;
+}
+
+hr { 
+    border: 3px solid white;
+    border-radius: 5px;
+    width: 400px;
+}
+
+.logos {
+    display: flex;
+
+    margin-left: 375px;
+    margin-right: 375px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+img{
+    border: 1px solid black;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 4px;
+}
+
+img:hover{
+    border:3px solid purple;
+}
+
+.botonesNav{
+    display: flex;
+}
+
+.botonesNav>.botonOpen{
+    width: 115pxpx;
+    height: 35px;
+    border: none;
+    border-radius: 8%;
+    background-color: purple;
+    color: white;
+    font-size: 15pt; 
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    right: 300px;
+    font-family: 'Amatic SC', cursive;
+}
+.botonesNav>.botonDown{
+    width: 115px;
+    height: 35px;
+    border: none;
+    border-radius: 8%;
+    background-color: blue;
+    color: white;
+    font-size: 15pt; 
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    right:175px;
+    font-family: 'Amatic SC', cursive;
+}
+.botonesNav>.botonFAQ{
+    width: 85px;
+    height: 35px;
+    border: none;
+    border-radius: 8%;
+    background-color: hotpink;
+    color: white;
+    font-size: 15pt; 
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    right:75px;
+    font-family: 'Amatic SC', cursive;
+}
+
+.botonesNav>:hover{
+    background-color: black;
+    opacity: 0.5;
+}
+
+.botonesFooter{
+    display: flex;
+}
+
+.botonesFooter>.botonCont{
+    width: 85px;
+    height: 30px;
+    border: none;
+    border-radius: 8%;
+    background-color: gray;
+    color: white;
+    text-decoration: underline white;
+    font-size: 15pt; 
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    left: 100px;
+    font-family: 'Amatic SC', cursive;
+}
+
+.botonesFooter>.botonHelp{
+    width: 85px;
+    height: 30px;
+    border: none;
+    border-radius: 8%;
+    background-color: gray;
+    color: white;
+    text-decoration: underline white;
+    font-size: 15pt; 
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    right:100px;
+    font-family: 'Amatic SC', cursive;
+}
+
+.botonesFooter>:hover{
+    background-color: black;
+    opacity: 0.5;
+}
