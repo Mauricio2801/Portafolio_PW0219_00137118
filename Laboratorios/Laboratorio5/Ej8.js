@@ -1,9 +1,8 @@
-var numero = prompt("Ingrese el numero a convertir"); 
-
-	 convertir (numero)
- 
-	function convertir(numero){
-		alert(numero.toString(2));
- 	}
+function convertir(numero){
+    let num1 = numero.toString(2);
 
 
+    console.log("EL numero " + numero + "en bionario es: "+num1)
+}
+
+convertir(3);
