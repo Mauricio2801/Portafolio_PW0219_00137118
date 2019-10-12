@@ -7,3 +7,295 @@
 
 </body>
 </html>
+
+create table Pago(
+	Tipo Varchar(30),
+	Número numeric
+);
+	Alter table Pago ADD CONSTRAINT PK_Pago PRIMARY KEY(Tipo);
+
+create table Año(
+	Número numeric
+);
+	alter table año ADD CONSTRAINT PK_Año PRIMARY KEY(Numero);
+
+create table Subventas(
+	Id numeric
+);
+	alter table Subventas ADD CONSTRAINT PK_Subventas PRIMARY KEY(Id);
+
+create table Responsable(
+	Dui Char(10)
+);
+	alter table Responsable ADD CONSTRAINT PK_Responsable PRIMARY KEY(Dui);
+
+create table Nivel(
+	Denominación Varchar(50)
+);
+	alter table Nivel ADD CONSTRAINT PK_Nivel PRIMARY KEY(Denominacion);
+
+create table Carrera(
+	Denominación Varchar(70)
+);
+	alter table carrera ADD CONSTRAINT PK_Carrera PRIMARY KEY(Denominacion);
+
+create table Edificio(
+	Denominación Varchar(100)
+);
+	alter table Edificio ADD CONSTRAINT PK_Edificio PRIMARY KEY(Denominacion);
+
+CREATE TABLE Aula(
+	Nivel numeric,
+	Orden numeric,
+	Denominación_Edificio Varchar(100),
+	Espacios numeric
+);
+	alter table aula ADD CONSTRAINT PK_Aula PRIMARY KEY(Nivel,Orden);
+	alter table aula ADD CONSTRAINT FK_Edificio foreign key (Denominacion_Edificio) REFERENCES Edificio(Denominacion);  
+                        
+CREATE TABLE Grado(
+	Número numeric,
+	Denominacion_Nivel Varchar(50)
+);
+	alter table grado ADD CONSTRAINT PK_Grado PRIMARY KEY(Numero);
+	alter table grado ADD CONSTRAINT FK_Nivel foreign key (Denominacion_Nivel) REFERENCES Nivel(Denominacion);
+                         
+CREATE TABLE Seccion(
+	Letra Char,
+	Número_grado numeric
+);
+	alter table seccion ADD CONSTRAINT PK_Seccion PRIMARY KEY(Letra);
+	alter table seccion ADD CONSTRAINT FK_Grado foreign key (Numero_Grado) REFERENCES Grado(Numero);                     
+
+CREATE TABLE Semestre(
+	Orden numeric,
+	Numero_Año numeric
+);
+	alter table semestre ADD CONSTRAINT PK_Semestre PRIMARY KEY(Orden);
+	alter table semestre ADD CONSTRAINT FK_Año foreign key (Numero_Año) REFERENCES Año(Numero);
+	
+CREATE TABLE Bitácora(
+	Correlativo numeric,
+	Fecha_hora Datetime,
+	tipo Varchar(30), 
+	Comentario Text,
+	Nie_Alumno numeric
+); 
+	alter table bitácora ADD CONSTRAINT PK_Bitacora PRIMARY KEY(Correlativo);
+	alter table bitácora ADD CONSTRAINT FK_Alumno foreign key (Nie_Alumno) REFERENCES Alumno(Nie);
+
+CREATE TABLE Alumno(
+	Nie numeric,
+	Numero_Año numeric
+); 
+	alter table alumno ADD CONSTRAINT PK_Alumno PRIMARY KEY(Nie);
+	alter table alumno ADD CONSTRAINT FK_Año foreign key (Numero_Año) REFERENCES Año(Numero);
+
+CREATE TABLE Asignatura(
+	Denominación Varchar(70),
+​	Numero_Año numeric,
+​	Número_Grado numeric
+);
+	alter table Asignatura ADD CONSTRAINT PK_Asignatura PRIMARY KEY(Denominacion);
+	alter table asignatura ADD CONSTRAINT FK_Año foreign key (Numero_Año) REFERENCES Año(Numero);
+	alter table asignatura ADD CONSTRAINT FK_Grado foreign key (Numero_Grado) REFERENCES Grado(Numero);
+
+CREATE TABLE Docente(
+	Dui Char(10),
+	Orden_Semestre numeric
+);
+	alter table docente ADD CONSTRAINT PK_Docente PRIMARY KEY(Dui);
+	alter table docente ADD CONSTRAINT FK_Semestre foreign key (Orden_Semestre) REFERENCES Semestre(Orden);
+
+CREATE TABLE EdificioxAumno(
+	Nie_Alumno numeric,
+	Denominacion_Edificio Varchar(100),
+ 	hora_entrada Time,
+	hora_salida Time,
+	fecha Date
+);
+	alter table edificioxalumno ADD CONSTRAINT PK_EdificioxAlumno PRIMARY KEY (Nie_Alumno,Denominacion_Edificio);
+	alter table edificioxalumno ADD CONSTRAINT FK_Alumno foreign key (Nie_Alumno) REFERENCES Alumno(Nie);
+	alter table edificioxalumno ADD CONSTRAINT FK_Edificio foreign key (Denominacion_Edificio) REFERENCES Edificio (Denominacion);
+
+CREATE TABLE AlumnoxAsignatura(
+	Nie_Alumno numeric,
+	Denominacion_Asignatura Varchar(70),
+); 
+	alter table alumnoxasignatura ADD CONSTRAINT PK_AlumnoxAsignatura PRIMARY KEY (Nie_Alumno,Denominacion_Asignatura);
+	alter table alumnoxasignatura ADD CONSTRAINT FK_Alumno foreign key (Nie_Alumno) REFERENCES Alumno(Nie);
+	alter table alumnoxasignatura ADD CONSTRAINT FK_Asignatura foreign key (Denominacion_Asignatura) REFERENCES Asignatura(Denominacion);
+
+CREATE TABLE DocentexBitacora(
+	Dui_Docente Char(10),
+	Correlativo_Bitacora numeric
+);
+	alter table docentexbitacora ADD CONSTRAINT PK_DocentexBitacora PRIMARY KEY (Dui_Docente,Correlativo_Bitacora);
+	alter table docentexbitacora ADD CONSTRAINT FK_Docente foreign key (Dui_Docente) REFERENCES Docente(Dui);
+	alter table docentexbitacora ADD CONSTRAINT FK_Bitacora foreign key (Correlativo_Bitacora) REFERENCES Bitacora(Correlativo);
+
+CREATE TABLE AlumnoxResponsable(
+	Nie_Alumno numeric,
+	Dui_Responsable Char(10)
+);
+	alter table alumnoxresponsable ADD CONSTRAINT PK_AlumnoxResponsable PRIMARY KEY (Nie_Alumno,Dui_Responsable);
+	alter table alumnoxresponsable ADD CONSTRAINT FK_Alumno foreign key (Nie_Alumno) REFERENCES Alumno(Nie);
+	alter table alumnoxresponsable ADD CONSTRAINT FK_Responsable foreign key (Dui_Responsable) REFERENCES Responsable(Dui);
+
+CREATE TABLE ResponsablexBitacora(
+	Dui_Responsable Char(10),
+	Correlativo_Bitacora numeric
+);
+	alter table responsablexbitacora ADD CONSTRAINT PK_ResponsablexBitacora PRIMARY KEY (Dui_Responsable,Correlativo_Bitacora);
+	alter table responsablexbitacora ADD CONSTRAINT FK_Responsable foreign key (Dui_Responsable) REFERENCES Responsable(Dui);
+	alter table responsablexbitacora ADD CONSTRAINT FK_Bitacora foreign key (Correlativo_Bitacora) REFERENCES Bitacora(Correlativo);
+
+CREATE TABLE Subitacora(
+	Correlativo_Macrobitacora numeric,
+	Correlativo_Subtiacora numeric
+);
+	alter table Subitacora ADD CONSTRAINT PK_Subitacora PRIMARY KEY (Correlativo_Marobitacora,Correlativo_Subtiacora);
+	alter table Subitacora ADD CONSTRAINT FK_Macrobitacora foreign key (Correlativo_Macrobitacora) REFERENCES Bitacora(Correlativo);
+	alter table Subitacora ADD CONSTRAINT FK_Subitacora foreign key (Correlativo_Subtiacora) REFERENCES Bitacora(Correlativo);
+
+CREATE TABLE AlumnoxPago(
+	Nie_Alumno numeric,
+	Tipo_Pago Varchar(30),
+	Numero_Pago numeric,
+	Monto Money,
+	Fecha_Pago Date,
+	Estado Varchar(20),
+	Fecha_Emision Date,
+	Fecha_Vencimiento Date
+);
+	alter table alumnoxpago ADD CONSTRAINT PK_AlumnoxPago PRIMARY KEY (Nie_Alumno,Tipo_Pago,Numero_Pago);
+	alter table alumnoxpago ADD CONSTRAINT FK_Alumno foreign key (Nie_Alumno) REFERENCES Alumno(Nie);
+	alter table alumnoxpago ADD CONSTRAINT FK_Tipo foreign key (Tipo_Pago) REFERENCES Pago(Tipo);
+	alter table alumnoxpago ADD CONSTRAINT Numero foreign key (Numero_Pago) REFERENCES Pago(Numero);
+
+CREATE TABLE GradoxAsignatura(
+	Numero_Gradro numeric,
+	Denominacion_Asignatura Varchar(40), 
+	Numero_Año numeric
+);
+	alter table gradoxasignatura ADD CONSTRAINT PK_GradoxAsignatura PRIMARY KEY (Numero_Grado,Denominacion_Asignatura);
+	alter table gradoxasignatura ADD CONSTRAINT FK_Grado foreign key (Numero_Grado) REFERENCES Grado(Numero);
+	alter table gradoxasignatura ADD CONSTRAINT FK_Asignatura foreign key (Denominacion_Asignatura) references Asignatura (Denominacion);
+	alter table gradoxasignatura ADD CONSTRAINT FK_Año foreign key (Numero_Año) REFERENCES Año (Numero);
+ 
+CREATE TABLE DocentexSeccionxSemestre(
+	Orden_Semestre numeric,
+	Letra_Seccion Char,
+	Dui_Docente Char(10)
+); 
+	alter table docentexseccionxsemestre ADD CONSTRAINT PK_DocentexSeccionxSemestre PRIMARY KEY (Orden_Semestre,Letra_Seccion,Dui_Docente);
+	alter table docentexseccionxsemestre ADD CONSTRAINT FK_Semestre foreign key (Orden_Semestre)   REFERENCES Semestre(Orden);
+	alter table docentexseccionxsemestre ADD CONSTRAINT FK_Seccion foreign key (Letra_Seccion) REFERENCES Seccion (Letra);
+	alter table docentexseccionxsemestre ADD CONSTRAINT FK_Docente foreign key (Dui_Docente) REFERENCES Docente(Dui);
+
+ CREATE TABLE CarreraxEstudiante(
+	Denominacion_Carrera Varchar(70),
+	Dui_Estudiante char(10),
+	Numero_Año numeric
+); 
+	alter table carreraxestudiante ADD CONSTRAINT PK_CarreraxEstudiante PRIMARY KEY (Denominacion_Carrera,Dui_Estudiante);
+	alter table carreraxestudiante ADD CONSTRAINT FK_Carrera foreign key (Denominacion_Carrea) REFERENCES Carrera(Denominacion);
+	alter table carreraxestudiante ADD CONSTRAINT FK_Estudiante foreign key (Dui_Estudiante) REFERENCES Estudiante(Dui);
+	alter table carreraxestudiante ADD CONSTRAINT FK_Año foreign key (Numero_Año) REFERENCES Año(Numero);
+
+CREATE TABLE AlumnoxSubventas(
+	Id_Subventa numeric,
+	Nie_Alumno​ numeric,
+	Numero_Año numeric
+); 
+	alter table alumnoxsubventas ADD CONSTRAINT PK_AulumnoSubventas PRIMARY KEY   (Id_Subventa,Nie_Alumno);
+	alter table alumnoxsubventas ADD CONSTRAINT FK_Subventa foreign key (Id_Subventa) REFERENCES Subventa(Id);
+	alter table alumnoxsubventas ADD CONSTRAINT FK_Alumno foreign key (Nie_Alumno) REFERENCES Alumno(Nie);
+	alter table alumnoxsubventas ADD CONSTRAINT FK_Año foreign key (Numero_Año) REFERENCES Año(Numero);
+
+CREATE TABLE Clase(
+	Nivel_Aula numeric,
+	Orden_Aula numeric
+);
+	alter table clase ADD CONSTRAINT PK_Clase PRIMARY KEY(Nivel_Aula,Orden_Aula);
+	alter table clase ADD CONSTRAINT FK_Nivel foreign key (Nivel_Aula) REFERENCES Aula (Nivel);
+	alter table clase ADD CONSTRAINT FK_Orden foreign key (Orden_Aula) REFERENCES Aula (Orden);
+
+CREATE TABLE Lab_Cc(
+	Nivel_Aula numeric,
+	Orden_Aula numeric
+); 
+	alter table Lab_Cc ADD CONSTRAINT PK_Lab PRIMARY KEY(Nivel_Aula,Orden_Aula);
+	alter table Lab_Cc ADD CONSTRAINT FK_Nivel foreign key (Nivel_Aula) REFERENCES Aula (Nivel);
+	alter table Lab_Cc ADD CONSTRAINT FK_Orden foreign key (Orden_Aula) REFERENCES Aula (Orden);
+
+CREATE TABLE AulaxSeccion(
+	Letra_Seccion char
+);
+	alter table aulaxseccion ADD CONSTRAINT PK_AulaxSeccion PRIMARY KEY(Letra_Seccion);
+	alter table aulaxseccion ADD CONSTRAINT FK_Letra foreign key (Letra_Seccion) REFERENCES Seccion(Letra);
+
+CREATE TABLE AulaxAsignatura(
+	Letra_Seccion char,
+); 
+	alter table aulaxasignatura ADD CONSTRAINT PK_AulaxAsignatura PRIMARY KEY(Letra_Seccion);
+	alter table aulaxasignatura ADD CONSTRAINT FK_Letra foreign key (Letra_Seccion) REFERENCES Seccion(Letra);
+
+CREATE TABLE Estudiante(
+	Dui_Docente char(10),
+	Dui_Responsable char(10)
+);
+	alter table estudiante ADD CONSTRAINT PK_Estudiante PRIMARY KEY (Dui_Docente,Dui_Responsable);
+	alter table estudiante ADD CONSTRAINT FK_Docente foreign key (Dui_Docente) REFERENCES Docente(Dui);
+	alter table estudiante ADD CONSTRAINT FK_Responsable foreign key (Dui_Responsable) REFERENCES Responsable(Dui);
+
+CREATE TABLE Profesor(
+	Dui_Docente char(10)
+);
+	alter table profesor ADD CONSTRAINT PK_Profesor PRIMARY KEY(Dui_Docente);
+	alter table profesor ADD CONSTRAINT FK_Docente foreign key (Dui_Docente) REFERENCES Docente(Dui);
+
+CREATE TABLE Empleado(
+	Dui_Responsable char(10),
+	Oficina varchar(40),
+	Telefono_Uca char(20)
+);
+	alter table empleado ADD CONSTRAINT PK_Empleado PRIMARY KEY(Dui_Responsable);
+	alter table empleado ADD CONSTRAINT FK_Responsable foreign key (Dui_Responsable) REFERENCES Responsable(Dui);
+
+CREATE TABLE AulaxSeccionxClase(
+	Nivel_Aula numeric,
+	Orden_Aula numeric,
+	Letra_Seccion char, 
+	Numero_Año numeric
+);
+	alter table aulaxseccionxclase ADD CONSTRAINT PK_AulaxSeccionxClase PRIMARY KEY (Nivel_Aula,Orden_Aula,Letra_Seccion);
+	alter table aulaxseccionxclase ADD CONSTRAINT FK_Clase foreign key (Nivel_Aula) REFERENCES Clase (Nivel);
+	alter table aulaxseccionxclase ADD CONSTRAINT FK_Clase_2 foreign key (Orden_Aula) REFERENCES Clase (Orden);
+	alter table aulaxseccionxclase ADD CONSTRAINT FK_Seccion foreign key (Letra_Seccion) REFERENCES AulaxSeccion(Letra_Seccion);
+	alter table aulaxseccionxclase ADD CONSTRAINT FK_Año foreign key (Numero_Año) REFERENCES Clase (Numero);
+
+CREATE TABLE AulaxAsignaturaxClase(
+	Nivel_Aula numeric,
+	Orden_Aula numeric,
+	Letra_Seccion char, 
+	Numero_Año numeric
+); 
+	alter table aulaxasignaturaxclase ADD CONSTRAINT PK_AulaxAsignaturaxClase PRIMARY KEY (id_Clase,Letra_Seccion);
+	alter table aulaxasignaturaxclase ADD CONSTRAINT FK_Clase foreign key (Nivel_Aula) REFERENCES Clase (Nivel);
+	alter table aulaxasignaturaxclase ADD CONSTRAINT FK_Clase_2 foreign key (Orden_Aula) REFERENCES Clase (Orden);
+	alter table aulaxasignaturaxclase ADD CONSTRAINT FK_Seccion foreign key (Letra_Seccion) REFERENCES AulaxAsignatura(Letra_Seccion);
+	alter table aulaxasignaturaxclase ADD CONSTRAINT FK_Año foreign key (Numero_Año) REFERENCES Clase (Numero);
+
+CREATE TABLE Lab_ccxDocente(
+	Dui_Docente char(10),
+	Nivel_Lab numeric,
+	Orden_Lab​ numeric,
+	Fecha Date,
+	Inicio Time,
+	Fin Time
+); 
+	alter table Lab_ccxDocente ADD CONSTRAINT PK_Lab_ccxDocente PRIMARY KEY(Dui_Docente,Nivel_Lab,Orden_Lab);
+	alter table Lab_ccxDocente ADD CONSTRAINT FK_Docente foreign key (Dui_Docente) REFERENCES Docente (Dui);
+	alter table Lab_ccxDocente ADD CONSTRAINT FK_Nivel foreign key (Nivel_Lab) REFERENCES Lab_cc (Nivel);
+	alter table Lab_ccxDocente ADD CONSTRAINT FK_Orden foreign key (Orden_Lab) REFERENCES Lab_cc (Orden);
