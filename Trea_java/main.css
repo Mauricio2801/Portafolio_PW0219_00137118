@@ -1,0 +1,117 @@
+*{
+	margin:0px;
+	padding:0px;
+	font-family: verdana;
+	color:#bcbcbc;
+}
+.imagen{
+	float: left;
+	margin: 60px;
+	height: 330px;
+	width: 330px;
+}
+.imagen1{
+	align-items: center;
+	margin:10px;
+	height: 300px;
+	width: 400px;
+}
+h1{
+	font-size: 14;
+	color: white;
+}
+
+
+nav{
+	width: 100%
+	height:50px;
+	margin-top: 10px;
+}
+
+nav ul{
+	padding-top: 10px;
+	text-align: center;
+	padding-left: 30px;
+}
+
+nav ul li{
+	display: inline;
+	list-style-type: none;
+}
+body {
+    background-color: #112935;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-weight: 400;
+}
+
+.introduccion{ 
+	margin:20px;
+	text-align: justify;
+	font-size: 30px;
+}
+
+
+a{
+	color: white;
+}
+
+p{
+	margin: 20px;
+	text-align: justify;
+	font-size: 20px;
+}
+
+main{
+	position: relative;
+}
+
+section#dia1{
+	position: absolute;
+	z-index: 1;
+
+}
+section#dia2, section#dia3, section#dia4, section#dia5, section#dia1{
+	display: none;
+}
+
+section#dia2, section#dia3, section#dia4, section#dia5{ 
+	position: absolute;
+	z-index: auto;
+	visibility: hidden;
+}
+
+
+
+/*
+.btn-menu{
+	display: block;
+	padding: 20px;
+	background-color: #0d2c44;
+	color: white;
+}
+.contenedor-menu .menu li a{
+	color:#0d2c44;
+	display: block;
+	background-color: #e9e9e9;
+	padding: 20px;
+}
+.contenedor-menu  .menu li a:hover{
+	background-color: white;
+	color: black;
+}
+
+.contenedor-menu ul{
+	list-style: none;
+}
+
+.contenedor-menu .menu ul{
+	display: none;
+}
+
+.contenedor-menu{
+	margin:30px;
+}
+
+*/
