@@ -61,10 +61,10 @@
 			</h2>
 			<br>
 			<figure>
-				<img src="pictures/imagen1.jpg" class="Imagen2">
+				<img src="pictures/imagen2.jpg" class="Imagen2">
 			</figure>
 			<article>
-				
+				<p>El siguinte día, se nos dio la tarea de crear una funcion junto con dos triggers que verificaran el departamento en el que se encuentra trabajando, esta fue asignada por Ada Jarvis. Al final logre resolverlo con la funcion que se pidio, utilizando psql, con unos cuantos if, que verificaran si el miembro estaba trabajado en algun departamento.</p>
 			</article>
 		</section>
 
@@ -74,11 +74,14 @@
 			</h2>
 			<br>
 			<figure>
-				<img src="pictures/imagen1.jpg" class="Imagen3">
+				<img src="pictures/imagen3.jpg" class="Imagen3">
 			</figure>
 			<article>
-				<p>El primer día se nos explico la problematica, en donde Kurt, nos decia cuales eran las intenciones de Ale Rav, para esto intento buscar un medio por el cual no podrian identificarnos y que fuera seguro tanto para el como para nosotros, ese dia, se nos encomendo la primera mision, verificar los DUI que se nos daban a travez de una funcion. 
-				Como se vera en la captura del codigo que se insertó a la base de datos, se creo la funcion declarando las variables necesarias, y utilizando psql, para realizar sumatorias, restas, modulos y las funciones if, apra declarar si el DUI era verdadero o falso.</p>
+				<p>Ya es el tercer día, y se sigue con la problematica, duele saber que aun no confian en mi, pero al mismo timepo es comprensible, esta en peligro de muerte y no sabe en quien confiar.
+				Existe un potencial problema de incoherencia entre la clasificación de miembro en sus subclases y el atributo denominacion_departamento... por ejemplo, sería incorrecto que un miembro de la subclase ingenieria tuviera en el atributo mencionado en la superclase "ventas". En tal sentido hay que desarrollar una función (y un trigger que la ejecute) que haga lo siguiente:
+				1) Cuando se inserte en la tabla miembro debe comprobarse la coincidencia del departamento expresado en el atributo con la existencia de este miembro en la subclase correcta. Si no está, se debe rechazar la inserción.
+				2) Cuando se actualice el atributo departamento de miembro, entonces debe moverse al miembro a la subclase que corresponda. Esto implica borrar el miembro de la subclase y reinsertarlo donde corresponde. Ten en cuenta que:
+    </p>
 			</article>
 		</section>
 
@@ -91,8 +94,10 @@
 				<img src="pictures/imagen1.jpg" class="Imagen4">
 			</figure>
 			<article>
-				<p>El primer día se nos explico la problematica, en donde Kurt, nos decia cuales eran las intenciones de Ale Rav, para esto intento buscar un medio por el cual no podrian identificarnos y que fuera seguro tanto para el como para nosotros, ese dia, se nos encomendo la primera mision, verificar los DUI que se nos daban a travez de una funcion. 
-				Como se vera en la captura del codigo que se insertó a la base de datos, se creo la funcion declarando las variables necesarias, y utilizando psql, para realizar sumatorias, restas, modulos y las funciones if, apra declarar si el DUI era verdadero o falso.</p>
+				<p>
+Ya llegamos al cuarto día, la deses peracio aumenta, ahora son varias cosas que tenemos que revisar:
+1. Como es disjunta hay que asegurar la independencia de los miembros de subclases de proyectos, y también la eliminación en la superclase tras el borrado en la subclase.
+2. Como la especialización no es total, en este caso sí puede haber objetos solamente en la superclase, pero atención, éstos deben tener código de  tipo 'O' o se deberá rechazar la inserción, también se debe validar con los otros códigos que los objetos deben estar previamente en las subclases correspondientes, o se debe rechazar la operación. Por suerte ya hay un trigger que impide el ingreso de un proyecto cuyo código no sea válido, así que nos podemos ahorrar ese trabajo.</p>
 			</article>
 		</section>
 
@@ -102,11 +107,10 @@
 			</h2>
 			<br>
 			<figure>
-				<img src="pictures/imagen1.jpg" class="Imagen5">
+				<img src="pictures/imagen5.jpg" class="Imagen5">
 			</figure>
 			<article>
-				<p>El primer día se nos explico la problematica, en donde Kurt, nos decia cuales eran las intenciones de Ale Rav, para esto intento buscar un medio por el cual no podrian identificarnos y que fuera seguro tanto para el como para nosotros, ese dia, se nos encomendo la primera mision, verificar los DUI que se nos daban a travez de una funcion. 
-				Como se vera en la captura del codigo que se insertó a la base de datos, se creo la funcion declarando las variables necesarias, y utilizando psql, para realizar sumatorias, restas, modulos y las funciones if, apra declarar si el DUI era verdadero o falso.</p>
+				<p>Este dia... el ultimo, si.... duele saber que Kurt tuvo que entregar su vida, pero lo arriesgo todo, apra desenmascarar al responsable de todo esto, como se ve en la imagen, dejo ese link donde se logra deostrar la identidad de ALE RAV... Dio su vida, pero al menos hoy sabemos quien es el responsable de todo esto, y podremos detener todo., y <a href="https://drive.google.com/open?id=1LSU6vJfGuH1hs0rsYZWKlS94bHpWgJLJ">aqui</a>, dejo la verdadera identidad de ALE RAV</p>
 			</article>
 		</section>
 	</main>
